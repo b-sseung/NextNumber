@@ -1,0 +1,18 @@
+.next, .replay {
+  width: 100vw;
+  height: 45vh;
+  display: flex;
+  justify-content: center;
+}
+
+.nextButton, .replayButton {
+  max-width: 80vw;
+  border: dashed 1px black;
+  border-radius:  20px;
+  padding:5vh 10vw ;
+  font-size: 10vw;
+  font-weight: bold;
+  margin: auto 0px;
+  background-color: #00000022;
+  white-space: nowrap;
+}
