@@ -37,6 +37,7 @@ function allRead(){
         phones[position] = doc.get("tel");
         passeds[position] = doc.get("passed");
         numbers[position] = doc.get("number");
+        position++;
     });
   }).catch((error) => {
     console.log("Error getting documents: ", error);
@@ -45,7 +46,7 @@ function allRead(){
 
 function updatePass(num){
   
-  db.collection("LIST").doc(num).update({
+  db.collection("LIST").doc(num.toString()).update({
     passed: "yes"
   })
   .then(() => {
