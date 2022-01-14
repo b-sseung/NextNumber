@@ -45,7 +45,7 @@ function allRead(){
 
 function updatePass(num){
   
-  db.collection("LIST").doc("test").update({
+  db.collection("LIST").doc(num).update({
     passed: "yes"
   })
   .then(() => {
