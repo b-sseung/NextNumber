@@ -26,7 +26,9 @@ var settings = {
 
 var size = 0;
 function allRead(){
-  db.collection("LIST").get().then((querySnapshot) => {
+  var today = new Date();
+  var col = today.toLocaleDateString();
+  db.collection(col).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         size++;
         // names[position] = doc.get("name");
@@ -40,9 +42,13 @@ function allRead(){
   });
 }
 
+var position = 0;
 function readData(){
   var value = true;
-  db.collection("LIST").get().then((querySnapshot) => {
+  var today = new Date();
+  var col = today.toLocaleDateString();
+  
+  db.collection(col).get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
       if (value && doc.get("passed") == "no") {
 
@@ -68,7 +74,9 @@ function readData(){
 }
 
 function updatePass(num){
-  db.collection("LIST").doc(num.toString()).update({
+  var today = new Date();
+  var col = today.toLocaleDateString();
+  db.collection(col).doc(num.toString()).update({
     passed: "yes"
   })
   .then(() => {
@@ -81,7 +89,8 @@ function updatePass(num){
 
 function addData(title, num, name, tel, temperature) {
   var today = new Date();
-  db.collection("LIST").doc(title.toString()).set({
+  var col = today.toLocaleDateString();
+  db.collection(col).doc(title.toString()).set({
     number: num,
     name: name,
     time: today.toLocaleString(),
