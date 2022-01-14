@@ -27,10 +27,12 @@ var phones = [];
 var passeds = [];
 var numbers = [];
 
+var size = 0;
 function allRead(){
   var position = 0;
   db.collection("LIST").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
+        size++;
         names[position] = doc.get("name");
         phones[position] = doc.get("tel");
         passeds[position] = doc.get("passed");
@@ -54,7 +56,25 @@ function updatePass(num){
   });
 }
 
+function addData(title, num, name, tel, temperature) {
+  var today = new Date();
+  db.collection("LIST").doc(title.toString()).set({
+    number: num,
+    name: name,
+    time: today.toLocaleString(),
+    tel: tel,
+    temperature: temperature,
+    passed: "no"
+  })
+  .then(() => {
+      console.log("Document successfully written!");
+  })
+  .catch((error) => {
+      console.error("Error writing document: ", error);
+  });
+}
+
 console.log("tlqkf");
 
 
-export {names, phones, passeds, numbers, allRead, updatePass};
+export {size, names, phones, passeds, numbers, allRead, updatePass, addData};

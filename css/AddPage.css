@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 95vh;
+}
+
+.part, .button_part {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+}
+
+.part label {
+  font-size: 2vw;
+  font-weight: bold;
+  min-width: 15vw;
+  max-width: 30vw;
+  margin-right: 15px;
+  white-space: nowrap;
+  text-align: center;
+  padding: 2vh;
+}
+
+.part input {
+  font-size: 2vw;
+  min-width: 30vw;
+  max-width: 70vw;
+  white-space: nowrap;
+  text-align: center;
+  padding: 2vh;
+  border: 1px solid black;
+}
+
+.button_label {
+  font-size: 2vw;
+  font-weight: bold;
+  min-width: 20vw;
+  max-width: 70vw;
+  white-space: nowrap;
+  text-align: center;
+  padding: 4vh;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #00000022;
+  margin: auto 20px;
+}

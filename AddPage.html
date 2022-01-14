@@ -1,31 +1,36 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>백운2동 행정복지센터 순서 부르기</title>
-  <link rel="stylesheet" href="css/ReadPage.css" />
+  <link rel="stylesheet" href="css/AddPage.css" />
   <script type="module" src="js/firebase.js"></script>
-  <script type="module" src="js/ReadPage.js"></script>
+  <script type="module" src="js/AddPage.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 </head>
 <body>
-  <div class="number_part">
+  <div class="part">
     <label class="number_label">번호</label>
-    <label class="number" id="number">OOO</label>
+    <input class="number" id="number">
   </div>
-  <div class="name_part">
+  <div class="part">
     <label class="name_label">이름</label>
-    <label class="name" id="name">OOO</label>
+    <input class="name" id="name">
   </div>
-  <div class="tel_part">
+  <div class="part">
     <label class="tel_label">연락처</label>
-    <label class="tel" id="tel">010-0000-0000</label>
+    <input class="tel" id="tel">
+  </div>
+  <div class="part">
+    <label class="temperature_label">체온</label>
+    <input class="temperature" id="temperature">
   </div>
   <div class="button_part">
-    <button class="button_label" id="button" type="button">다음</button>
+    <button class="button_label" id="add" type="button">추가</button>
+    <button class="button_label" id="cancel" type="button">취소</button>
   </div>
 </body>
 </html>
