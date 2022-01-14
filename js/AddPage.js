@@ -13,8 +13,10 @@ window.onload = function(){
 
   var position = size;
   addButton.addEventListener("click", function(){
-    
-    addData(position, numberBox.value, nameBox.value, telBox.value, temperatureBox.value);
+    var title = ("000000" + (size+position))
+    // console.log(size + ", " + position + ", " + title + ", " + );
+    var cutTitle = title.substring(title.length-6, title.length);
+    addData(cutTitle, numberBox.value, nameBox.value, telBox.value, temperatureBox.value);
     numberBox.value = "";
     nameBox.value = "";
     telBox.value = "";

@@ -1,41 +1,56 @@
-import {names, phones, passeds, numbers, allRead, updatePass} from "./firebase.js";
+import {allRead, updatePass, readData} from "./firebase.js";
 
+var nextbutton, numberBox, nameBox, telBox;
 window.onload = function(){
     
   var position = 0;
 
-  var nextbutton = document.getElementById("button");
-  var numberBox = document.getElementById("number");
-  var nameBox = document.getElementById("name");
-  var telBox = document.getElementById("tel");
+  nextbutton = document.getElementById("button");
+  numberBox = document.getElementById("number");
+  nameBox = document.getElementById("name");
+  telBox = document.getElementById("tel");
 
   allRead();
 
   nextbutton.addEventListener("click", function(){
-    allRead();
+    readData();
 
-    console.log(names);
-    console.log(phones);
-    console.log(passeds);
-    console.log(numbers);
+    // allRead();
 
-    while (passeds.length > position && passeds[position] != "no") {
-      position++;
-    }
+    // console.log(names);
+    // console.log(phones);
+    // console.log(passeds);
+    // console.log(numbers);
 
-    if (passeds.length == position) return;
+    // while (passeds.length > position && passeds[position] != "no") {
+    //   position++;
+    // }
 
-    loadData(position);
+    // if (passeds.length == position) {
+    //   return;
+    // }
+
+    // loadData(position);
     
-    updatePass(position);
+    // updatePass(position);
 
-    position++;
+    // position++;
   });
-  
-  function loadData(position) {
-    numberBox.innerText = numbers[position];
-    nameBox.innerText = names[position];
-    telBox.innerText = phones[position];
-  }
+
 }
+
+function loadData(number, name, tel) {
+  numberBox.innerText = number;
+  nameBox.innerText = name;
+  telBox.innerText = tel;
+}
+
+function noData() {
+  numberBox.innerText = "대기자가 없습니다.";
+  nameBox.innerText = "";
+  telBox.innerText = "";
+}
+
+
+export { loadData, noData };
 

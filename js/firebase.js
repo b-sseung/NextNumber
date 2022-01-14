@@ -1,5 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+import { loadData, noData } from "./ReadPage.js";
+// import { speak } from "./SpeakPage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCW9MA3X7m-yiG1zlihG7K5Vo0x2XJJ_co",
@@ -22,30 +24,50 @@ var settings = {
   timestampsInSnapshots: true,
 };
 
-var names = [];
-var phones = [];
-var passeds = [];
-var numbers = [];
-
 var size = 0;
 function allRead(){
-  var position = 0;
   db.collection("LIST").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         size++;
-        names[position] = doc.get("name");
-        phones[position] = doc.get("tel");
-        passeds[position] = doc.get("passed");
-        numbers[position] = doc.get("number");
-        position++;
+        // names[position] = doc.get("name");
+        // phones[position] = doc.get("tel");
+        // passeds[position] = doc.get("passed");
+        // numbers[position] = doc.get("number");
+        // position++;
     });
   }).catch((error) => {
     console.log("Error getting documents: ", error);
   });
 }
 
+function readData(){
+  var value = true;
+  db.collection("LIST").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      if (value && doc.get("passed") == "no") {
+
+        var name = doc.get("name");
+        var number = doc.get("number");
+        var phone = doc.get("tel");
+
+        loadData(name, number, phone);
+        console.log(doc.get("name"));
+        // console.log(doc + ", " + doc.id);
+        updatePass(doc.id);
+
+        value = false;
+      }
+    });
+  }).catch((error) => {
+    console.log("Error getting documents: ", error);
+  });
+
+  if (value) {
+    noData();
+  }
+}
+
 function updatePass(num){
-  
   db.collection("LIST").doc(num.toString()).update({
     passed: "yes"
   })
@@ -54,7 +76,7 @@ function updatePass(num){
   })
   .catch((error) => {
     console.error("Error updating document: ", error);
-  });
+  }); 
 }
 
 function addData(title, num, name, tel, temperature) {
@@ -78,4 +100,4 @@ function addData(title, num, name, tel, temperature) {
 console.log("tlqkf");
 
 
-export {size, names, phones, passeds, numbers, allRead, updatePass, addData};
+export {size, allRead, readData, updatePass, addData};

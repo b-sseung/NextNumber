@@ -1,4 +1,4 @@
-import {names, phones, passeds, allRead, updatePass} from "./firebase.js";
+import {allRead, updatePass} from "./firebase.js";
 
 window.onload = function() {
   
@@ -10,23 +10,23 @@ window.onload = function() {
   allRead();
 
   nextbutton.addEventListener("click", function(){
-    allRead();
+    // allRead();
 
-    console.log(names);
-    console.log(phones);
-    console.log(passeds);
+    // console.log(names);
+    // console.log(phones);
+    // console.log(passeds);
 
-    while (passeds.length > position && passeds[position] != "no") {
-      position++;
-    }
+    // while (passeds.length > position && passeds[position] != "no") {
+    //   position++;
+    // }
 
-    if (passeds.length == position) return;
+    // if (passeds.length == position) return;
 
-    speak(names[position]);
+    // speak(names[position]);
 
-    updatePass(position);
+    // updatePass(position);
 
-    position++;
+    // position++;
   });
 
   replaybutton.addEventListener("click", function(){
